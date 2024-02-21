@@ -32,9 +32,26 @@ function createFolderOrFileElement(item, type = null, isFirstLevel) {
                     <img src="./delete.svg" class="delete-btn"/>
                 </div>
             </div>
-        `
+        `;
     } else {
+        explorerDiv.innerHTML = `
+            <div class="container">
+                <div class="folder-info">
+                    <img src="./arrow-up.svg" class="arrow" id="up"/>
+                    <img src="./folder.svg" class="folder"/>
+                    <p>${item.text}</p>
+                </div>
 
+                <div class="actions">
+                    <img src="./folder-add.svg" class="addFolder"/>
+                    <img src="./file-add.svg" class="addFile"/>
+                    <img src="./edit.svg" class="edit-btn"/>
+                    <img src="./delete.svg" class="delete-btn"/>
+                </div>
+            </div>
+
+            <div class="items-container"></div>
+        `;
     }
 
     return explorerDiv;

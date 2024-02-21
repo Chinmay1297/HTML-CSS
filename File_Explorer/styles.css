@@ -39,3 +39,17 @@ input{
 button{
     margin-left: 5px;
 }
+
+.container{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.folder-info,
+.file-info{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
