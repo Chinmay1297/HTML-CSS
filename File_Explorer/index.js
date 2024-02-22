@@ -101,11 +101,30 @@ function createFolderOrFileElement(item, type = null, isFirstLevel) {
 
     const deleteBtn = explorerDiv?.querySelector(".delete-btn");
     deleteBtn?.addEventListener("click", () => {
+        function deleteObjectById(array, targetId) {
+            for (let i = 0; i < array.length; i++) {
+                if (array[i].id === targetId) {
+                    array.splice(i, 1);
+                    return true;
+                }
+
+                if (array[i].items && array[i].items.length > 0) {
+                    if (deleteObjectById(array[i], item.id)) return true;
+                }
+            }
+
+            return false;
+        }
+        deleteObjectById(explorerData, item.id);
         explorerDiv.remove();
     });
 
     const editBtn = explorerDiv?.querySelector(".edit-btn");
     editBtn?.addEventListener("click", () => {
+        if (document.querySelector(".save-btn")) {
+            document.querySelector(".save-btn").remove();
+            document.querySelector(".cancel-btn").remove();
+        }
         let saveBtn = document.createElement("button");
         let cancelBtn = document.createElement("button");
 
@@ -121,6 +140,7 @@ function createFolderOrFileElement(item, type = null, isFirstLevel) {
         itemName.focus();
 
         cancelBtn.addEventListener("click", () => {
+            console.log("explorerData:", explorerData);
             itemName.textContent = item.text;
             explorerDiv.removeChild(cancelBtn);
             explorerDiv.removeChild(saveBtn);
@@ -139,6 +159,9 @@ function createFolderOrFileElement(item, type = null, isFirstLevel) {
 }
 
 function createItemInput(item, parentContainer, type, isFirstLevel) {
+    if (document.querySelector(".createItemContainer")) {
+        document.querySelector(".createItemContainer").remove();
+    }
     const itemInput = document.createElement("input");
     itemInput.type = "text";
     itemInput.placeholder = type === "file" ? "File name..." : "Folder name...";
