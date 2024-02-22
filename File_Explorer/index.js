@@ -19,6 +19,13 @@ function createFolderOrFileElement(item, type = null, isFirstLevel) {
     const explorerDiv = document.createElement("div");
     explorerDiv.className = "item";
 
+    if (isFirstLevel) {
+        explorerDiv.style.marginLeft = type === "file" && "30px";
+    }
+    else {
+        explorerDiv.style.marginLeft = type === "file" ? "60px" : "30px";
+    }
+
     if (type === "file") {
         explorerDiv.innerHTML = `
             <div class="container">
@@ -54,6 +61,80 @@ function createFolderOrFileElement(item, type = null, isFirstLevel) {
         `;
     }
 
+    const itemsContainer = explorerDiv?.querySelector(".items-container");
+    const arrow = explorerDiv?.querySelector(".arrow");
+    const folderInfo = explorerDiv?.querySelector(".folder-info");
+
+    folderInfo?.addEventListener("click", () => {
+        if (!itemsContainer.innerHTML) {        //optional
+            if (arrow.id === "up") {
+                arrow.src = "./arrow-down.svg";
+                arrow.id = "down";
+            } else if (arrow.id === "down") {
+                arrow.src = "./arrow-up.svg";
+                arrow.id = "down";
+            }
+
+            return;
+        }
+        if (itemsContainer.style.display === "none") {
+            arrow.src = "./arrow-down.svg";
+            itemsContainer.style.display = "block";
+        }
+        else {
+            arrow.src = "./arrow-up.svg";
+            itemsContainer.style.display = "none";
+        }
+    });
+
+    const addFolderBtn = explorerDiv?.querySelector(".addFolder");
+    addFolderBtn?.addEventListener("click", () => {
+        arrow.src = "./arrow-down.svg";
+        explorerDiv.querySelector(".items-container").appendChild(createItemInput(item, explorerDiv));
+    });
+
+    const addFileBtn = explorerDiv?.querySelector(".addFile");
+    addFileBtn?.addEventListener("click", () => {
+        arrow.src = "./arrow-down.svg";
+        explorerDiv.querySelector(".items-container").appendChild(createItemInput(item, explorerDiv, "file"));
+    });
+
+    const deleteBtn = explorerDiv?.querySelector(".delete-btn");
+    deleteBtn?.addEventListener("click", () => {
+        explorerDiv.remove();
+    });
+
+    const editBtn = explorerDiv?.querySelector(".edit-btn");
+    editBtn?.addEventListener("click", () => {
+        let saveBtn = document.createElement("button");
+        let cancelBtn = document.createElement("button");
+
+        saveBtn.classList.add("save-btn");
+        saveBtn.textContent = "Save";
+        cancelBtn.classList.add("cancel-btn");
+        cancelBtn.textContent = "Cancel";
+        explorerDiv.insertBefore(saveBtn, itemsContainer);
+        explorerDiv.insertBefore(cancelBtn, itemsContainer);
+
+        let itemName = explorerDiv?.querySelector("p");
+        itemName.contentEditable = true;
+        itemName.focus();
+
+        cancelBtn.addEventListener("click", () => {
+            itemName.textContent = item.text;
+            explorerDiv.removeChild(cancelBtn);
+            explorerDiv.removeChild(saveBtn);
+            itemName.contentEditable = false;
+        });
+
+        saveBtn.addEventListener("click", () => {
+            item.text = itemName.textContent;
+            explorerDiv.removeChild(cancelBtn);
+            explorerDiv.removeChild(saveBtn);
+            itemName.contentEditable = false;
+        });
+    });
+
     return explorerDiv;
 }
 
@@ -84,6 +165,8 @@ function createItemInput(item, parentContainer, type, isFirstLevel) {
                 : { id: Date.now(), text: itemText, items: [] };
 
             isFirstLevel ? item.push(newItem) : item.items.push(newItem);
+            createItemContainer.remove();
+
             if (isFirstLevel) {
                 parentContainer.appendChild(createFolderOrFileElement(
                     newItem,
@@ -92,7 +175,13 @@ function createItemInput(item, parentContainer, type, isFirstLevel) {
                 ));
             }
             else {
-
+                parentContainer.querySelector(".items-container")
+                    .appendChild(
+                        createFolderOrFileElement(
+                            newItem,
+                            type === "file" && "file"
+                        )
+                    );
             }
         }
     })
