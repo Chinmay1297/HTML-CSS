@@ -72,7 +72,7 @@ function createCommentElement(comment, isFirstLevel = false) {
                     return true;
                 }
 
-                if (array[i].replies && arr[i].replies.length > 0) {
+                if (array[i].replies && array[i].replies.length > 0) {
                     if (deleteObjectById(array[i].replies, targetId)) {
                         return true;
                     }
