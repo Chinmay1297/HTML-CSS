@@ -9,7 +9,7 @@ function createCommentElement(comment, isFirstLevel = false) {
     commentDiv.style.marginLeft = isFirstLevel ? "0px" : "20px";
     commentDiv.innerHTML = `
     <p>${comment.text}</p>
-    <div class="actions">
+    <div class="btn-actions">
         <button class="reply-btn">Reply</button>
         <button class="edit-btn">Edit</button>
         <button class="delete-btn">Delete</button>
@@ -20,6 +20,69 @@ function createCommentElement(comment, isFirstLevel = false) {
     const replyBtn = commentDiv.querySelector(".reply-btn");
     replyBtn.addEventListener("click", () => {
         commentDiv.querySelector(".replies-container").appendChild(createReplyInput(comment, commentDiv));
+    });
+
+    const repliesContainer = commentDiv.querySelector(".replies-container");
+    const editBtn = commentDiv.querySelector(".edit-btn");
+    editBtn.addEventListener("click", () => {
+        console.log("commentsData:", commentsData);
+
+        let buttons = commentDiv.querySelector(".btn-actions");
+        buttons.style.display = "none";
+
+        let saveBtn = document.createElement("button");
+        let cancelBtn = document.createElement("button");
+
+        saveBtn.classList.add("save-btn");
+        saveBtn.textContent = "Save";
+
+        cancelBtn.classList.add("cancel-btn");
+        cancelBtn.textContent = "Cancel";
+
+        commentDiv.insertBefore(saveBtn, repliesContainer);
+        commentDiv.insertBefore(cancelBtn, repliesContainer);
+
+        let commentTag = commentDiv.querySelector("p");
+        commentTag.contentEditable = true;
+        commentTag.focus();
+
+        cancelBtn.addEventListener("click", () => {
+            commentTag.contentEditable = false;
+            commentTag.textContent = comment.text;
+            buttons.style.display = "inline-block";
+            commentDiv.removeChild(cancelBtn);
+            commentDiv.removeChild(saveBtn);
+        });
+
+        saveBtn.addEventListener("click", () => {
+            comment.text = commentTag.textContent;
+            commentTag.contentEditable = false;
+            buttons.style.display = "inline-block";
+            commentDiv.removeChild(cancelBtn);
+            commentDiv.removeChild(saveBtn);
+        });
+    });
+
+    const deleteBtn = commentDiv.querySelector(".delete-btn");
+    deleteBtn.addEventListener("click", () => {
+        function deleteObjectById(array, targetId) {
+            for (let i = 0; i < array.length; i++) {
+                if (array[i].id === targetId) {
+                    array.splice(i, 1);
+                    return true;
+                }
+
+                if (array[i].replies && arr[i].replies.length > 0) {
+                    if (deleteObjectById(array[i].replies, targetId)) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        deleteObjectById(commentsData, comment.id);
+        commentDiv.remove();
     });
 
     return commentDiv;
@@ -63,6 +126,10 @@ function createReplyInput(comment, parentContainer) {
 
             parentContainer.querySelector(".replies-container").appendChild(createCommentElement(newReply));
         }
+    });
+
+    cancelButton.addEventListener("click", () => {
+        replyContainer.remove();
     });
 
     return replyContainer;
