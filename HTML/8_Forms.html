@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <style>
+        label {
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Form Controls</h1>
+    <!-- Action decides the endpoint to which it will submit form details, you can also mention method: get/put/post/etc -->
+    <!-- <form action="http://www.google.com" method="GET"> -->
+    <form action="#">
+        <!-- For attribute decides which field/control to focus on click of this label -->
+        <label for="firstName">First Name</label>
+        <input type="text" name="FirstName" placeholder="Put your first name here" id="firstName">
+
+        <label for="lastName">Last Name</label>
+        <input type="text" name="LastName" placeholder="Put your last number here" id="lastName">
+
+        <label for="password">Password</label>
+        <input type="password" name="Password" id="password">
+
+        <label for="phoneNumber">Phone Number</label>
+        <input type="number" name="PhoneNumber" id="phoneNumber" required>
+
+        <label for="email">Email</label>
+        <input type="email" name="Email" id="email">
+
+        <label for="color">Color</label>
+        <input type="color" name="Color" id="color">
+
+        <label for="textarea">Text Area</label>
+        <textarea name="Textarea" id="textarea" cols="30" rows="10"></textarea>
+
+        <label for="range">Range</label>
+        <input type="range" name="Range" id="range" min="0" max="100" value="20">
+
+        <label for="checkbox">Checkbox</label>
+        <input type="checkbox" name="Checkbox" id="checkbox">
+
+        <label for="petsSelect">Select Pet</label>
+        <select name="SelectPets" id="petsSelect">
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+        </select>
+
+        <!-- Grouped Radio inputs should have same name -->
+        <label for="btn1">Button 1</label>
+        <input type="radio" name="radiobuttons" id="btn1" value="button1">
+        <label for="btn1">Button 2</label>
+        <input type="radio" name="radiobuttons" id="btn2" value="button2">
+        <br>
+        <br>
+        <button>Submit</button>
+    </form>
+</body>
+
+</html>
