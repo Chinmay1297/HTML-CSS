@@ -10,13 +10,19 @@
         }
 
         /* Descendant Combinator */
-        .cast li span {
+        .cast span {
+            /* Here span may be 100 levels down li, but still will be selected */
             color: green;
         }
 
         /* Child Combinator */
         div>ul>li {
             color: blue;
+        }
+
+        ul>li {
+            /* This will select all li inside ul */
+            text-decoration: underline magenta;
         }
     </style>
 </head>
@@ -37,6 +43,13 @@
         <li><span>wef</span></li>
         <li><span>rthjtyj</span></li>
         <li><span>tyjtyj</span></li>
+        <li>
+            <div>
+                <div>
+                    <p>Lorem ipsum dolor sit amet consectetur.`<br><span>This span is descendant of #cast</span></p>
+                </div>
+            </div>
+        </li>
     </ul>
 
     <h1>Child Combinator</h1>
