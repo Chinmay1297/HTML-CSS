@@ -1,0 +1,94 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input[type="number"] {
+            margin-top: 5px;
+            background-color: aqua;
+        }
+
+        input[type="email"] {
+            margin-top: 5px;
+            background-color: rgb(182, 233, 180);
+        }
+
+        input[type="text"] {
+            margin-top: 5px;
+            background-color: rgb(227, 225, 167);
+        }
+
+        input[type="checkbox"] {
+            margin-top: 5px;
+            background-color: rgb(213, 179, 239);
+        }
+
+        a {
+            color: rgb(7, 98, 63);
+            font-weight: bolder;
+            font-size: 18px;
+        }
+
+        /* href*="wiki" will look for url's having wiki in them' */
+        /* href="wiki"  will look  for url exactly equal to wiki*/
+        a[href*="wiki"] {
+            color: rgb(227, 27, 213)
+        }
+
+        /* Links with url that starts with # */
+        a[href^="#"] {
+            color: chocolate;
+        }
+
+        /* Links with a URL that ends with google.com*/
+        a[href$=".com"] {
+            color: rgb(166, 181, 1)
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Attribute selector</h1>
+    <div id="Information">Leave your own review:</div>
+    <input type="email" id="emailfield" placeholder="Email"><br>
+    <input type="number" id="numberfield" placeholder="Phone number"><br>
+    <input type="text" id="textfield" placeholder="Review"><br>
+    <label for="checkboxfield">Yes or no: </label><input type="checkbox" id="checkboxfield">
+
+    <br>
+    <h3>Selecting Anchor tags with their href values</h3>
+    <p id="Summary">Lorem ipsum dolor sit amet, <a
+            href="https://en.wikipedia.org/wiki/Wikipedia:Typography">Typography</a>
+        consectetur
+        adipisicing elit. Tempora dolor omnis alias illo blanditiis ipsum, quidem rerum quis error. Autem officiis <a
+            href="https://en.wikipedia.org/wiki/Wikipedia:Typography">xyz</a>
+        veniam asperiores tempore praesentium dignissimos? Labore obcaecati laudantium tempore! Quo, quis fuga unde
+        voluptate delectus soluta deserunt autem hic.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur <a href="https://en.wikipedia.org/wiki/Wikipedia:Typography">deserunt</a>
+        adipisicing elit. Dolor neque tempora saepe! Dolorum id perferendis magni eveniet maxime, doloremque maiores.
+        <a href="https://www.google.com/">Google</a>
+    </p>
+    <ul>
+        Some other links:
+        <li><a href="https://www.google.com/">Lorem ipsum dolor sit amet consectetur adipisicing.</a></li>
+        <li><a href="https://www.google.com/">Lorem ipsum dolor sit.</a></li>
+        <li><a href="https://www.google.com/">Lorem ipsum dolor sit, amet consectetur adipisicing.</a></li>
+    </ul>
+
+    <ul>
+        <b>Some other page links:</b>
+        <li><a href="#Summary">Summary</a></li>
+        <li><a href="#About">About</a></li>
+        <li><a href="#Information">Information</a></li>
+    </ul>
+
+    <h3>About</h3>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, dolor soluta voluptas iusto voluptatibus
+        porro veritatis nisi, libero magni harum sed natus amet iste nostrum quam officia id asperiores deserunt fugiat
+        totam, modi sequi voluptatem? Beatae nostrum iure esse, aperiam, odio sunt perferendis quibusdam vero est minima
+        quod repellendus totam!</p>
+</body>
+
+</html>

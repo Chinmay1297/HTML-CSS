@@ -1,0 +1,53 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div h2 {
+            color: red;
+        }
+
+        /* Descendant Combinator */
+        .cast li span {
+            color: green;
+        }
+
+        /* Child Combinator */
+        div>ul>li {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Descendant Combinator</h1>
+
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse vel iusto iure a, officiis ducimus explicabo
+        voluptatum suscipit asperiores et.</p>
+
+    <h2>Blah Blah</h2>
+
+    <div>
+        <h2>OMG LOL- This heading is inside a div</h2>
+    </div>
+
+    <ul class="cast">
+        <li><span>wef</span></li>
+        <li><span>rthjtyj</span></li>
+        <li><span>tyjtyj</span></li>
+    </ul>
+
+    <h1>Child Combinator</h1>
+    <div>
+        <p>The > combinator selects elements that are direct children of the first element</p>
+        <ul>
+            <li>6u6</li>
+            <li>rftght</li>
+            <li>poueryui</li>
+        </ul>
+    </div>
+</body>
+
+</html>
