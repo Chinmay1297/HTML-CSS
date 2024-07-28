@@ -1,0 +1,56 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            border-width: 2px;
+            border-color: tan;
+            border-style: dashed;
+        }
+
+        h2 {
+            /* All border properties using short hand */
+            border: 3px solid green;
+            background-color: antiquewhite;
+
+            /* This changes the width of the box */
+            width: 150px;
+            height: 60px;
+        }
+
+        #container {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .box {
+            /* Since div is a block level element its gonna stretch horizontally all the way across screen/or whatever it is inside */
+            border: 1px solid orangered;
+            /* Height is 50% of its container */
+            height: 50%;
+            /* Width is 50% of its container */
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>The Box Model</h1>
+    <div>
+        This is inside div.
+        <span>This is inside a div and inside a span.</span>
+        <p>This is a paragraph inside a div.</p>
+    </div>
+    <h2>This is h2</h2>
+    <div id="container">
+        <div class="box">
+
+        </div>
+    </div>
+</body>
+
+</html>
