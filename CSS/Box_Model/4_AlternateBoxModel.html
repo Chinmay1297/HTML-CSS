@@ -1,0 +1,54 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Alternate Box Model</title>
+    <style>
+        .container {
+            height: 200px;
+            width: 200px;
+            background-color: blue;
+            padding: 10px;
+            /* It will shrink its inner content to match its width and height */
+            box-sizing: border-box;
+        }
+
+        .box {
+            height: 100%;
+            width: 100%;
+            background-color: blueviolet;
+        }
+
+        .line {
+            height: 200px;
+            width: 1px;
+            background-color: black;
+            border: 2px solid black;
+        }
+
+        .regbox {
+            height: 100px;
+            width: 100px;
+            padding: 50px;
+            border: 5px solid slategray;
+            background-color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>The Alternate Box Model</h1>
+    <p>With <b>box-sizing</b> set to <b>border-box</b>, the width and height now control the overall dimensions of the
+        entire visible box.</p>
+    <div class="container">
+        <div class="box">Its size is shrinked to maintain container's width and height.</div>
+    </div>
+    <hr>
+    <h1>Regular box model</h1>
+    <div class="regbox">
+        <div>Its height should be 100 + 50 + 50 + 5 + 5= 210px</div>
+    </div>
+</body>
+
+</html>
