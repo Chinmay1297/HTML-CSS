@@ -1,0 +1,33 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Margin</title>
+    <style>
+        .container {
+            border: 2px solid brown;
+            height: 200px;
+            width: 200px;
+            background-color: chocolate;
+        }
+
+        .box {
+            border: 2px solid blue;
+            height: 10%;
+            /* Margin wont shrink it, instead it will go outside its container from the right */
+            width: 100%;
+            background-color: aqua;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Working with Margins</h1>
+</body>
+<div class="container">
+    <div class="box"></div>
+</div>
+
+</html>
