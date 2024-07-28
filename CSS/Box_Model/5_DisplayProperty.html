@@ -1,0 +1,76 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Property</title>
+    <style>
+        #word {
+            border: 15px solid green;
+            padding: 10px;
+            /* Why margin is applied only horizontally? */
+            margin: 10px;
+        }
+
+        h4 {
+            /* border / margin to h1 is pushing away the words beside it */
+            border: 15px solid goldenrod;
+            padding: 25px;
+            margin: 15px;
+        }
+
+        #ibWord {
+            display: inline-block;
+            border: 10px solid green;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>The Issue ?</h1>
+    <h4>The Display Property</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, enim optio odit laudantium, eligendi
+            aliquam
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur fuga minus sunt eos exercitationem iusto
+            praesentium odit, esse placeat sequi consequuntur possimus officia eius. Vel animi ullam dignissimos, libero
+            mollitia eveniet cumque modi excepturi explicabo repellendus! Animi, quisquam architecto. Natus?
+            harum necessitatibus illo suscipit molestias error, ipsam fugit <span id="word">Lorem.</span>excepturi unde.
+            Ducimus quia
+            earum possimus
+            recusandae, quam cum mollitia excepturi quasi nihil culpa, nisi eum quos sunt esse distinctio impedit nulla?
+            Illum ab veniam modi, repellat consequuntur numquam. Laborum nobis eaque, asperiores earum, similique
+            debitis
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis perspiciatis nostrum fugit dicta dolor!
+            Sint
+            dolorum, cupiditate, sit veritatis possimus voluptatum expedita laboriosam neque inventore, a dolore hic
+            eveniet
+            delectus! Necessitatibus, nisi. Ipsa voluptatem nemo numquam ipsam corrupti, eos autem? Lorem ipsum dolor,
+            sit
+            amet consectetur adipisicing elit. Labore, voluptates.
+        </p>
+        <br>
+        <h3>Observations:
+    </h4>
+    <ul>
+        <li>Margin is applied horizontally</li>
+        <li>Padding to border is not pushing away the words beside it.</li>
+        <li>Block elements push content away when margin/padding is used.</li>
+        <li><b>h1</b> is a block element</li>
+        <li>Inline elements doesnt push content away.</li>
+        <li><b>span</b> is an inline element</li>
+        <li><b>Width and Height are not respected for inline elements, but respected for block elements.</b></li>
+    </ul>
+
+    <h3 style="display: inline;">H3 heading tag</h3>
+    <a href="#">Since h3 is now inline, it will be displayed right after h3 tag.</a>
+
+    <h3>What is inline-block then ?</h3>
+    <ul>
+        <li>Its hybrid of inline and block.</li>
+        <li>A block that <span id="ibWord">doesnt</span> break into a new line.</li>
+        <li>Padding and Margin push other elements away from the box</li>
+    </ul>
+</body>
+
+</html>
