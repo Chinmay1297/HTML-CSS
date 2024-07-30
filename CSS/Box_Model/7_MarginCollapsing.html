@@ -1,0 +1,33 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Margin Collapsing</title>
+    <style>
+        p {
+            border: 1px solid grey;
+            margin: 10px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Margin Collapsing</h1>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus error quia vero fuga ipsam totam dolore
+        quam soluta illo fugit doloribus cum excepturi dicta ab, maxime tempore minus a corrupti. Nisi iure, fuga,
+        laborum magnam earum provident doloribus unde impedit ullam asperiores aspernatur culpa quisquam saepe, illo
+        assumenda modi blanditiis.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, provident, sapiente quasi voluptatibus rerum
+        quibusdam possimus sed, asperiores omnis suscipit in consequatur atque ad eius enim modi officia doloribus eos!
+    </p>
+    <h3>In above paragraphs, since we have top margin = 10px and bottom margin as 10px, total space between two
+        paragraphs should have been 20px, but we see its 10px only.</h3>
+    <h3>The margins dont add up vertically on block level elements</h3>
+    <div>
+        <p>If we have margin top as 10px and margin bottom as 40px, then total space between the paras will be 40px. The
+            larger margin wins.</p>
+    </div>
+</body>
+
+</html>
