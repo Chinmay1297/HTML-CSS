@@ -1,0 +1,92 @@
+body{
+    font-family: Cormorant, serif;
+}
+
+h1{
+    display: inline-block;
+    margin: 0;
+    margin-right: 32px;
+}
+
+.links{
+    display: inline-block;
+}
+
+.links li{
+    display: inline-block;
+}
+
+.links a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    margin: 0 8px;
+    font-weight: bolder;
+}
+
+.links ul{
+padding: 0;
+}
+
+.navbar{
+    margin: 32px;
+}
+
+a.active{
+    border-bottom: 1px solid black;
+}
+
+.card{
+    /* with display inline-block u cant use 50% width, as it respects white space, you'd have to remove ther space between divs. */
+    width: 49.75%;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.card img{
+    width: 100%;
+    height: 500px;
+    /* Image will be clipped on shorter screen rather than squashing/stretching */
+    object-fit:cover;  
+}
+
+.card h2{
+    display: inline-block;
+    margin: 8px 0 0 0;
+}
+
+.gallery{
+    padding: 16px;
+}
+
+.about{
+    width: 40%;
+    min-width: 600px;
+    margin: 100px 0 100px 150px;
+}
+
+.about h3{
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.contact{
+    margin-top: 100px;
+}
+
+.contact p{
+    margin: 0;
+    font-size: 20px;
+}
+
+.cta{
+    border-bottom: 1px solid black;
+    display: inline-block;
+    padding-bottom: 6px;
+    margin-top: 0;
+}
+
+img:hover{
+    opacity: 0.9;
+}
