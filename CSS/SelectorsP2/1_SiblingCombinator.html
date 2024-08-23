@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sibling Combinator</title>
+    <style>
+        h2+p {
+            /* Selects only <p> which are immediately after/adjacent-to a <h2> */
+            /* Selects a sibling immediately after h2 */
+            color: brown;
+        }
+
+        h3~p {
+            /* Its like +, but here <p> doesnt necessarily be an adjacent to h3 */
+            /* Selects any sibling after h3 */
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Sibling Combinator</h1>
+    <div>
+        <h2>Siblings means, they share the same parent!</h2>
+        <h2>This is heading 2</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo tenetur sit vitae unde necessitatibus
+            molestias modi deserunt impedit ducimus quod voluptatem doloribus fugiat, aspernatur provident neque error
+            nostrum eos dignissimos aliquid. Id, minima architecto veritatis molestias praesentium ex numquam eos?
+            Molestiae perspiciatis consequatur reiciendis tenetur quos adipisci ratione delectus minus.</p>
+
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, rerum? <b>This paragraph is not adjacent to
+                h2, hence its color is not brown.</b></p>
+
+        <h3>This is heading 3</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt voluptate aut eum id error soluta molestias
+            velit, aliquid quaerat laudantium, placeat veniam eius ad cumque beatae nisi totam officia ducimus.</p>
+        <p><b>This will also be colored since its a sibling of h3.</b> Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Quidem dolorem voluptas blanditiis, ipsum quae reiciendis corrupti modi eligendi,
+            inventore ratione distinctio? Veniam dolore sequi autem necessitatibus, repudiandae illo rerum doloremque?
+        </p>
+    </div>
+</body>
+
+</html>
