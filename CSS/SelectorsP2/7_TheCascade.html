@@ -1,0 +1,44 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheCascade</title>
+</head>
+
+<body>
+    <h1><a href="https://2019.wattenberger.com/blog/css-cascade#level_1_4" target="_blank">The Cascade</a></h1>
+    <p>In the event of a conflict, which rule "wins"?</p>
+    <ol>
+        <li>Importance</li>
+        <li>Origin</li>
+        <li>Specificity</li>
+        <li>Position</li>
+    </ol>
+
+    <h2>Importance</h2>
+    <p>We can mark a declaration as important using the !important flag. This is always gonna win as its moved/elevated
+        to the top of cascade.</p>
+    <p>If theres a tie between two declaration with importance, it would move to check <b>Origin</b>.</p>
+
+    <h2>Origin</h3>
+        <p>It looks at where the rule was defined.</p>
+        <p>There are 3 places where a rule can be defined:</p>
+        <ol>
+            <li><b>website</b>- This is where you have control as a developer</li>
+            <li><b>user</b></li>
+            <li><b>browser</b> - Each browser has its own set of styles.</li>
+        </ol>
+
+        <p><b>Website</b> styles overrides browser styles.</p>
+        <p><b style="color: red;">*</b> has no specificity and selects everything. If you use <b
+                style="color: red;">*</b> and change font weight to normal,
+            then print a h1 tag, your style will win, even though h1 has a bold(provided by browser) weight. This is
+            because Specificity comes after Origin.</p>
+
+        <h2>Position</h2>
+        <p>If importance is a tie, origin is a tie and specificity is a tie, then it goes down to the order of the rules
+            defined <b style="color: green;">(the latest added rule wins)</b></p>
+</body>
+
+</html>
