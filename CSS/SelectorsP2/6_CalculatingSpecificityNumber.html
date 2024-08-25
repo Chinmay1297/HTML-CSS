@@ -1,0 +1,46 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalculatingSpecificityNumber</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Calculating Specificity Number</h1>
+    <p><b>The weight is determined by the number of selectors of each weight category in the selector matching the
+            element (or pseudo-element).</b></p>
+    <table>
+        <tr>
+            <th><b>Selector</b></th>
+            <th>Id</th>
+            <th>Class <br> Attribute <br> Pseudo-Class</th>
+            <th>Type <br> Pseudo-Elements</th>
+        </tr>
+        <tr>
+            <td>#special</td>
+            <td>1 <sub style="color: green;">special: ID</sub></td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>.main a: hover</td>
+            <td>0</td>
+            <td>2 <sub style="color: green;">main: class, hover: pseudo class</sub></td>
+            <td>1 <sub style="color: green;">a: element/type</sub></td>
+        </tr>
+        <tr>
+            <td colspan="4">1st one wins (it compares digits 1 by 1 from left to right (ID, Class, Pseudo)), which ever
+                side wins first is applied</td>
+        </tr>
+    </table>
+</body>
+
+</html>
