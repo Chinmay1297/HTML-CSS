@@ -1,0 +1,49 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specificity</title>
+    <style>
+        h2~p {
+            font-size: 19px;
+            font-weight: bolder;
+        }
+
+        p {
+            color: blueviolet
+        }
+
+        .featured {
+            color: rgb(222, 101, 61);
+        }
+
+        #selectedpara {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Specificity</h1>
+    <p>When <b>multiple rules with different selectors apply to the same element</b>, which one wins out?</p>
+    <ol>
+        <li>Inline Styles</li>
+        <li>ID Selectors</li>
+        <li>Class | Attribute | Pseudo-Class</li>
+        <li>Type | Psuedo-Elements</li>
+    </ol>
+
+    <hr>
+    <div>
+        <h2>Blah blah blah</h1>
+            <p>Paragraph selector wins here</p>
+            <p class="featured">Class Wins here</p>
+            <p class="featured" id="selectedpara">ID wins here</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas vero excepturi possimus provident neque
+                totam
+                laboriosam quod voluptates, earum asperiores?</p>
+    </div>
+</body>
+
+</html>
