@@ -27,7 +27,30 @@
         return group;
     }
 
+    rule = (particles1, particles2, g) => {
+        for (let i = 0; i < particles1.length; i++) {
+            fx = 0;
+            fy = 0
+            for (let j = 0; j < particles2.length; j++) {
+                a = particles1[i]
+                b = particles2[j]
+                dx = a.x - b.x;
+                dy = a.y - b.y;
+                d = Math.sqrt(dx * dx + dy * dy);  //using pythagoreas theorem
+                if (d > 0) {
+                    F = g * 1 / d;     //f = g * (m1 x m2)/d^2   gravity rule
+                    fx += (F * dx);
+                    fy = (F * dy);
+                }
+            }
+            a.x += fx;
+            a.y += fy;
+        }
+    }
+
+    yellow = create(6, "yellow")
     update = () => {
+        rule(yellow, yellow, -1);
         m.clearRect(0, 0, 500, 500)
         draw(0, 0, "black", 500)
         for (i = 0; i < particles.length; i++) {
