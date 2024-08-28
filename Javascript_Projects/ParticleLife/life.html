@@ -1,5 +1,6 @@
-<canvas id="life" width="500" height="500"></canvas>
+<canvas id="life" width="700" height="700"></canvas>
 <script>
+    let screenSize = 500;
     m = document.getElementById("life").getContext('2d');
     draw = (x, y, c, s) => {
         m.fillStyle = c
@@ -15,7 +16,7 @@
     }
 
     random = () => {
-        return Math.random() * 400 + 50;
+        return Math.random() * (screenSize - 80) + 50;
     }
 
     create = (number, color) => {
@@ -36,25 +37,47 @@
                 b = particles2[j]
                 dx = a.x - b.x;
                 dy = a.y - b.y;
-                d = Math.sqrt(dx * dx + dy * dy);  //using pythagoreas theorem
-                if (d > 0) {
+                d = Math.sqrt((dx * dx) + (dy * dy));  //using pythagoreas theorem
+                if (d > 0 && d < 40) {
                     F = g * 1 / d;     //f = g * (m1 x m2)/d^2   gravity rule
                     fx += (F * dx);
                     fy = (F * dy);
                 }
+
+
             }
-            a.x += fx;
-            a.y += fy;
+            //adding velocity
+            a.vx = (a.vx + fx) * 0.5;   //0.5 is multiplied to reduce velocity
+            a.vy = (a.vy + fy) * 0.5;
+            a.x += a.vx;
+            a.y += a.vy;
+            //rebound/(reverse direction) when going out of bounds
+            if (a.x <= 0 || a.x >= screenSize) { a.vx *= -1 }
+            if (a.y <= 0 || a.y >= screenSize) { a.vy *= -1 }
         }
+
+    }
+    function getRandomFloatWithMaintainedRange() {
+        const randomValues = Array.from({ length: 5 }, () => Math.random() * 2 - 1);
+        return randomValues.reduce((acc, val) => acc + val, 0) / randomValues.length;
     }
 
-    yellow = create(6, "yellow")
+
+    let noOfParticles = 300;
+
+    yellow = create(2000, "yellow");
+    red = create(400, "red");
+    //green = create(200, "green");
     update = () => {
-        rule(yellow, yellow, -1);
-        m.clearRect(0, 0, 500, 500)
-        draw(0, 0, "black", 500)
+        //-ve g attract
+        //+ve g repel
+        rule(yellow, red, 0.01);
+        rule(red, red, -0.1);
+        rule(red, yellow, -0.01);
+        m.clearRect(0, 0, screenSize, screenSize)
+        draw(0, 0, "black", screenSize)
         for (i = 0; i < particles.length; i++) {
-            draw(particles[i].x, particles[i].y, particles[i].color, 5);
+            draw(particles[i].x, particles[i].y, particles[i].color, 2);
         }
         requestAnimationFrame(update);
     }
